@@ -14,26 +14,45 @@ body {
     scroll-behavior: smooth;
 }
 
+/* Navbar */
+nav {
+    background: #0a66c2;
+    padding: 15px;
+    position: sticky;
+    top: 0;
+    text-align: center;
+}
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+nav a:hover {
+    text-decoration: underline;
+}
+
 /* Header */
 header {
-    background: #0a66c2;
-    color: white;
-    padding: 60px 20px;
     text-align: center;
+    padding: 80px 20px;
     animation: fadeIn 2s ease-in-out;
 }
-
 header h1 {
-    margin: 0;
-    font-size: 40px;
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+header p {
+    font-size: 18px;
+    color: #0a66c2;
 }
 
+/* Sections */
 section {
-    padding: 50px 20px;
+    padding: 60px 20px;
     max-width: 900px;
     margin: auto;
 }
-
 h2 {
     color: #0a66c2;
     border-bottom: 3px solid #0a66c2;
@@ -48,27 +67,31 @@ h2 {
     margin: 20px 0;
     border-radius: 10px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-    transform: translateY(30px);
-    opacity: 0;
-    animation: slideUp 1s forwards;
+    animation: slideUp 1s ease forwards;
 }
 
-.card:nth-child(1) { animation-delay: 0.3s; }
-.card:nth-child(2) { animation-delay: 0.6s; }
-
-ul {
-    line-height: 1.8;
+/* Buttons */
+.button {
+    display: inline-block;
+    background: #0a66c2;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    margin: 10px 5px;
+}
+.button:hover {
+    background: #084a8c;
 }
 
-/* Comment Box */
-textarea {
+/* Form */
+input, textarea {
     width: 100%;
-    padding: 12px;
-    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 6px;
     border: 1px solid #ccc;
-    resize: none;
 }
-
 button {
     background: #0a66c2;
     color: white;
@@ -76,9 +99,7 @@ button {
     padding: 10px 20px;
     border-radius: 6px;
     cursor: pointer;
-    margin-top: 10px;
 }
-
 button:hover {
     background: #084a8c;
 }
@@ -95,67 +116,65 @@ footer {
     from {opacity: 0;}
     to {opacity: 1;}
 }
-
 @keyframes slideUp {
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
+    from {transform: translateY(30px); opacity: 0;}
+    to {transform: translateY(0); opacity: 1;}
 }
 </style>
 </head>
 
 <body>
 
+<nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+</nav>
+
 <header>
     <h1>Biswajit Sahoo</h1>
     <p>Pharmacovigilance & Drug Safety Professional</p>
+    <a href="resume.pdf" class="button" download>Download Resume</a>
+    <a href="https://www.linkedin.com/" target="_blank" class="button">LinkedIn</a>
 </header>
 
-<section>
+<section id="about">
     <h2>About Me</h2>
     <div class="card">
-        <p>B.Pharm graduate with knowledge in Pharmacovigilance, ICSR case processing, MedDRA coding, aggregate reporting (DSUR, PSUR, PBRER), and ICH guidelines. Passionate about ensuring patient safety and regulatory compliance.</p>
+        <p>B.Pharm graduate with strong knowledge in Pharmacovigilance, ICSR processing, MedDRA coding, signal detection, and ICH guidelines (E2A–E2F). Passionate about patient safety and regulatory compliance.</p>
     </div>
 </section>
 
-<section>
+<section id="skills">
     <h2>Core Skills</h2>
     <div class="card">
         <ul>
-            <li>Adverse Event (AE) & Serious Adverse Event (SAE)</li>
+            <li>Adverse Event & Serious Adverse Event Handling</li>
             <li>ICSR Case Processing</li>
             <li>MedDRA Coding</li>
-            <li>Signal Detection</li>
             <li>Aggregate Reporting (DSUR, PSUR, PBRER)</li>
-            <li>ICH Guidelines (E2A – E2F)</li>
+            <li>Signal Detection</li>
             <li>FDA, EMA, MHRA Regulations</li>
         </ul>
     </div>
 </section>
 
-<section>
+<section id="projects">
     <h2>Projects</h2>
     <div class="card">
-        <p><strong>Pharmacovigilance Case Study Project</strong></p>
+        <strong>Pharmacovigilance Case Study</strong>
         <p>Performed seriousness assessment, expectedness evaluation, causality assessment, and narrative writing for mock ICSRs.</p>
     </div>
 </section>
 
-<section>
-    <h2>Contact / Leave a Message</h2>
+<section id="contact">
+    <h2>Contact</h2>
     <div class="card">
         <form action="https://formspree.io/f/xvzbyayd" method="POST">
-            
-            <label>Your Name</label><br>
-            <input type="text" name="name" required style="width:100%;padding:10px;margin-bottom:15px;border-radius:6px;border:1px solid #ccc;"><br>
-            
-            <label>Your Email</label><br>
-            <input type="email" name="email" required style="width:100%;padding:10px;margin-bottom:15px;border-radius:6px;border:1px solid #ccc;"><br>
-            
-            <label>Your Message</label><br>
-            <textarea name="message" rows="4" required style="width:100%;padding:10px;border-radius:6px;border:1px solid #ccc;"></textarea><br>
-            
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
             <button type="submit">Send Message</button>
         </form>
     </div>
@@ -167,4 +186,3 @@ footer {
 
 </body>
 </html>
-
