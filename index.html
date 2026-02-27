@@ -143,10 +143,21 @@ footer {
 </section>
 
 <section>
-    <h2>Leave a Comment</h2>
+    <h2>Contact / Leave a Message</h2>
     <div class="card">
-        <textarea rows="4" placeholder="Write your comment here..."></textarea>
-        <button onclick="alert('Thank you for your comment!')">Submit</button>
+        <form action="https://formspree.io/f/xvzbyayd" method="POST">
+            
+            <label>Your Name</label><br>
+            <input type="text" name="name" required style="width:100%;padding:10px;margin-bottom:15px;border-radius:6px;border:1px solid #ccc;"><br>
+            
+            <label>Your Email</label><br>
+            <input type="email" name="email" required style="width:100%;padding:10px;margin-bottom:15px;border-radius:6px;border:1px solid #ccc;"><br>
+            
+            <label>Your Message</label><br>
+            <textarea name="message" rows="4" required style="width:100%;padding:10px;border-radius:6px;border:1px solid #ccc;"></textarea><br>
+            
+            <button type="submit">Send Message</button>
+        </form>
     </div>
 </section>
 
@@ -156,3 +167,4 @@ footer {
 
 </body>
 </html>
+
