@@ -8,37 +8,79 @@
 <style>
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f4f6f9;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #e6f4f1, #f0f8ff);
     color: #333;
+    scroll-behavior: smooth;
 }
 
+/* Header */
 header {
     background: #0a66c2;
     color: white;
-    padding: 40px 20px;
+    padding: 60px 20px;
     text-align: center;
+    animation: fadeIn 2s ease-in-out;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 40px;
 }
 
 section {
-    padding: 40px 20px;
+    padding: 50px 20px;
     max-width: 900px;
     margin: auto;
 }
 
 h2 {
     color: #0a66c2;
-    border-bottom: 2px solid #0a66c2;
+    border-bottom: 3px solid #0a66c2;
     display: inline-block;
-    padding-bottom: 5px;
+    margin-bottom: 20px;
 }
 
+/* Card */
 .card {
     background: white;
-    padding: 20px;
-    margin: 15px 0;
+    padding: 25px;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    transform: translateY(30px);
+    opacity: 0;
+    animation: slideUp 1s forwards;
+}
+
+.card:nth-child(1) { animation-delay: 0.3s; }
+.card:nth-child(2) { animation-delay: 0.6s; }
+
+ul {
+    line-height: 1.8;
+}
+
+/* Comment Box */
+textarea {
+    width: 100%;
+    padding: 12px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    border: 1px solid #ccc;
+    resize: none;
+}
+
+button {
+    background: #0a66c2;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: #084a8c;
 }
 
 footer {
@@ -47,10 +89,18 @@ footer {
     text-align: center;
     padding: 20px;
 }
-a {
-    color: #0a66c2;
-    text-decoration: none;
-    font-weight: bold;
+
+/* Animations */
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes slideUp {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 </style>
 </head>
@@ -65,7 +115,7 @@ a {
 <section>
     <h2>About Me</h2>
     <div class="card">
-        <p>B.Pharm graduate with knowledge in Pharmacovigilance, ICSR case processing, MedDRA coding, aggregate reporting (DSUR, PSUR, PBRER), and ICH guidelines. Passionate about drug safety and regulatory compliance.</p>
+        <p>B.Pharm graduate with knowledge in Pharmacovigilance, ICSR case processing, MedDRA coding, aggregate reporting (DSUR, PSUR, PBRER), and ICH guidelines. Passionate about ensuring patient safety and regulatory compliance.</p>
     </div>
 </section>
 
@@ -88,15 +138,15 @@ a {
     <h2>Projects</h2>
     <div class="card">
         <p><strong>Pharmacovigilance Case Study Project</strong></p>
-        <p>Worked on mock ICSR case processing, seriousness assessment, expectedness evaluation, and narrative writing.</p>
+        <p>Performed seriousness assessment, expectedness evaluation, causality assessment, and narrative writing for mock ICSRs.</p>
     </div>
 </section>
 
 <section>
-    <h2>Contact</h2>
+    <h2>Leave a Comment</h2>
     <div class="card">
-        <p>Email: biswajitsahoo3775@gmail.com</p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/" target="_blank">View Profile</a></p>
+        <textarea rows="4" placeholder="Write your comment here..."></textarea>
+        <button onclick="alert('Thank you for your comment!')">Submit</button>
     </div>
 </section>
 
