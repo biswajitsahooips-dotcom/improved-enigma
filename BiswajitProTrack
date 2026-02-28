@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biswajit Sahoo | Growth Dashboard</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg,#141e30,#243b55);
+    color: white;
+}
+
+header {
+    background: #0a66c2;
+    padding: 20px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+}
+
+.card {
+    background: rgba(255,255,255,0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+}
+
+input, button {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    margin: 5px;
+}
+
+button {
+    background: #0a66c2;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #004182;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: rgba(255,255,255,0.2);
+    padding: 8px;
+    margin: 5px 0;
+    border-radius: 8px;
+}
+
+.social a {
+    margin-right: 15px;
+    text-decoration: none;
+    color: #00c6ff;
+    font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+🚀 Biswajit Sahoo | Daily Growth Dashboard
+</header>
+
+<div class="container">
+
+<div class="card">
+<h2>📝 Daily Task Manager</h2>
+<input type="text" id="taskInput" placeholder="Enter your daily task">
+<button onclick="addTask()">Add</button>
+<ul id="taskList"></ul>
+</div>
+
+<div class="card">
+<h2>📈 Daily Improvement Score (1-10)</h2>
+<input type="number" id="progressInput" min="1" max="10" placeholder="Enter score">
+<button onclick="addProgress()">Update</button>
+<canvas id="growthChart"></canvas>
+</div>
+
+<div class="card">
+<h2>👤 Professional Profile</h2>
+<p>Pharmacovigilance | ICSR | DSUR | PSUR | MedDRA Coding</p>
+<a href="resume.pdf" target="_blank">
+<button>📄 Download Resume</button>
+</a>
+</div>
+
+<div class="card social">
+<h2>🌐 Connect With Me</h2>
+<a href="https://www.linkedin.com/in/biswajit-sahoo-b02481386/" target="_blank">LinkedIn</a>
+<a href="https://github.com/biswajitsahooips-dotcom" target="_blank">GitHub</a>
+</div>
+
+</div>
+
+<script>
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+let progress = JSON.parse(localStorage.getItem("progress")) || [];
+
+function addTask(){
+    let input = document.getElementById("taskInput");
+    if(input.value !== ""){
+        tasks.push(input.value);
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+        input.value="";
+        displayTasks();
+    }
+}
+
+function displayTasks(){
+    let list = document.getElementById("taskList");
+    list.innerHTML="";
+    tasks.forEach(task=>{
+        let li=document.createElement("li");
+        li.textContent=task;
+        list.appendChild(li);
+    });
+}
+
+function addProgress(){
+    let input=document.getElementById("progressInput");
+    if(input.value !== ""){
+        progress.push(input.value);
+        localStorage.setItem("progress", JSON.stringify(progress));
+        input.value="";
+        updateChart();
+    }
+}
+
+displayTasks();
+
+let ctx=document.getElementById("growthChart").getContext("2d");
+let chart=new Chart(ctx,{
+    type:"line",
+    data:{
+        labels:progress.map((_,i)=>"Day "+(i+1)),
+        datasets:[{
+            label:"Growth Score",
+            data:progress,
+            borderColor:"#00c6ff",
+            borderWidth:3
+        }]
+    },
+    options:{
+        scales:{
+            y:{beginAtZero:true,max:10}
+        }
+    }
+});
+
+function updateChart(){
+    chart.data.labels=progress.map((_,i)=>"Day "+(i+1));
+    chart.data.datasets[0].data=progress;
+    chart.update();
+}
+</script>
+
+</body>
+</html>
